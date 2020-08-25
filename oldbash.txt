@@ -1,0 +1,49 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+alias connectlabor='vncviewer -via labor02@132.230.75.22 localhost:0'
+alias connectksenia='vncviewer -via labor05@132.230.75.124 localhost:0'
+alias ks='cd /home/ksenia/Auswertung'
+alias ..='cd ..'
+alias ll='ls -al -hr -t'
+# Function
+enterandlist()
+{
+        cd $1
+        ls
+}
+alias cl=enterandlist
+
+alias ssh24='ssh -X labor05@132.230.75.124'
+alias ssh22='ssh -X labor02@hefr22.physik.uni-freiburg.de'
+
+alias raspi3='ssh -X pi@hefr29.physik.uni-freiburg.de'
+alias raspi='ssh -X pi@hebook29.physik.uni-freiburg.de'
+
+alias root='root -l'
+alias bfg='ssh -Y ks608@ui.bfg.uni-freiburg.de'
+alias mountbfg='sshfs ks608@ui.bfg.uni-freiburg.de: ~/bfg'
+
+
+source /opt/root6/bin/thisroot.sh
+
+alias analysis='g++ main.cpp src/VMM.cpp src/convert.cpp src/Hit.cpp src/HitManager.cpp src/mapmake.cpp src/HistHold.cpp src/Manager.cpp src/Cluster.cpp src/ClusterManager.cpp src/EventDisplay.cpp -Iinclude/ -o Analysis -std=c++11 -pthread -std=c++11 -m64 -I/opt/root6/include  `root-config --libs --cflags`' 
+alias analysis2='g++ main.cpp src/VMM.cpp src/Hit.cpp src/HitManager.cpp src/HistHold.cpp src/Manager.cpp src/Cluster.cpp src/ClusterManager.cpp src/EventDisplay.cpp -Iinclude/ -o Analysis -std=c++11 -pthread -std=c++11 -m64 -I/opt/root6/include  `root-config --libs --cflags`' 
+alias scanalysis='g++ scan.cpp src/VMM.cpp src/mapmake.cpp src/convert.cpp src/Hit.cpp src/HitManager.cpp src/HistHold.cpp src/Manager.cpp src/Cluster.cpp src/ClusterManager.cpp src/EventDisplay.cpp -Iinclude/ -o Scanalysis -std=c++11 -pthread -std=c++11 -m64 -I/opt/root6/include  `root-config --libs --cflags`'
+alias calibranalysis='g++ calib.cpp src/CALIB.cpp -Iinclude/ -o Calibranalysis -std=c++11 -pthread -std=c++11 -m64 -I/opt/root6/include  `root-config --libs --cflags`' 
+alias angles='g++ angles.cpp src/Muon.cpp src/MuonManager.cpp src/Hists.cpp -Iinclude/ -o Angles -std=c++11 -pthread -std=c++11 -m64 -I/opt/root6/include  `root-config --libs --cflags`' 
+alias ratio='g++ ratio.cpp -o Ratio -std=c++11 -pthread -std=c++11 -m64  `root-config --libs --cflags`'
+alias peaks='g++ peaks.cpp -o Peaks -std=c++11 -pthread -m64 `root-config --libs --cflags`'
+alias pdocalib='g++ pdocalib.cpp src/CALIBN.cpp src/CALIB.cpp src/mapmake.cpp -Iinclude/ -o Pdocalib -std=c++11 -pthread -std=c++11 -m64 -I/opt/root6/include  `root-config --libs --cflags`' 
+
+
+
